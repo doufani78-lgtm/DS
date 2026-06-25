@@ -269,6 +269,97 @@
             transform: translateY(-1px);
         }
 
+        /* ── MODAL OVERLAY ── */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 38, 71, 0.65);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-overlay.hidden {
+            display: none;
+        }
+        .modal-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px 24px 24px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            position: relative;
+            text-align: center;
+            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: #475569;
+            transition: background 0.2s, color 0.2s;
+        }
+        .modal-close:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+        .modal-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        .modal-box h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f3460;
+            margin-bottom: 12px;
+        }
+        .modal-box p {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .modal-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            color: #1e293b;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 8px 16px -4px rgba(245, 158, 11, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 15px;
+        }
+        .modal-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -6px rgba(217, 119, 6, 0.5);
+        }
+
         /* ── MAIN LAYOUT ── */
         .wrap {
             max-width: 1100px;
@@ -780,6 +871,9 @@
             .section {
                 padding: 18px;
             }
+            .modal-box {
+                padding: 24px 18px 20px;
+            }
         }
         @media(prefers-reduced-motion:reduce) {
             * {
@@ -814,6 +908,19 @@
         </div>
     </div>
 
+    <!-- نافذة التنبيه المنبثقة -->
+    <div id="notice-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-box">
+            <button class="modal-close" onclick="document.getElementById('notice-modal').classList.add('hidden')" aria-label="إغلاق التنبيه">
+                ✕
+            </button>
+            <div class="modal-icon">📺</div>
+            <h3 id="modal-title">هذا الموقع جدول مباريات بدون بث</h3>
+            <p>هذا الموقع متخصص في عرض جداول المباريات والنتائج فقط، ولا يحتوي على روابط بث. إذا كنت تبحث عن صفحة تحتوي على جدول المباريات مدموجًا مع روابط البث، يمكنك الانتقال إليها بالضغط على الزر أدناه.</p>
+            <a href="https://doufani78-lgtm.github.io/DS/matchwhithlive.html" class="modal-link" target="_blank" rel="noopener">📋 انتقل لصفحة الجدول المدموج بروابط البث</a>
+        </div>
+    </div>
+
     <main class="wrap">
 
         <div class="date-bar">
@@ -837,49 +944,6 @@
         </div>
 
         <div id="grid" class="grid" style="display:none" aria-label="قائمة مباريات اليوم"></div>
-
-        <!-- قسم: ماذا نقدم -->
-        <section class="section" aria-labelledby="features-heading">
-            <h2 id="features-heading"><span class="section-icon">📋</span> ماذا يقدم موقع نتائج المباريات؟</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <span class="info-icon" aria-hidden="true">⚡</span>
-                    <div><strong>نتائج لحظية</strong><span>تحديث مستمر لنتائج المباريات الجارية أولاً بأول</span></div>
-                </div>
-                <div class="info-card">
-                    <span class="info-icon" aria-hidden="true">🕐</span>
-                    <div><strong>مواعيد دقيقة</strong><span>جدول منظم يوضح أوقات انطلاق جميع المباريات القادمة (بالتوقيت المحلي لجهازك)</span></div>
-                </div>
-                <div class="info-card">
-                    <span class="info-icon" aria-hidden="true">🏆</span>
-                    <div><strong>جميع البطولات</strong><span>دوري أبطال أوروبا، الدوريات الخمس الكبرى، البطولات الدولية</span></div>
-                </div>
-                <div class="info-card">
-                    <span class="info-icon" aria-hidden="true">📱</span>
-                    <div><strong>تصميم متجاوب</strong><span>يعمل بكفاءة على الهاتف، الجهاز اللوحي، وسطح المكتب</span></div>
-                </div>
-                <div class="info-card">
-                    <span class="info-icon" aria-hidden="true">🎯</span>
-                    <div><strong>نتائج منظمة</strong><span>عرض واضح للنتائج مع شعارات الفرق وأسماء الدوريات</span></div>
-                </div>
-                <div class="info-card">
-                    <span class="info-icon" aria-hidden="true">🔍</span>
-                    <div><strong>بدون بثوث</strong><span>موقع متخصص فقط في عرض النتائج والمواعيد دون أي بث</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم: البطولات المغطاة -->
-        <section class="section" aria-labelledby="leagues-heading">
-            <h2 id="leagues-heading"><span class="section-icon">🌍</span> البطولات التي نغطيها — نتائج ومواعيد</h2>
-            <p><strong>🏴 الدوري الإنجليزي الممتاز:</strong> نتائج مانشستر يونايتد، ليفربول، أرسنال، تشيلسي، مانشستر سيتي، توتنهام — جميع الجولات.</p>
-            <p><strong>🇪🇸 الدوري الإسباني:</strong> نتائج برشلونة، ريال مدريد، أتلتيكو مدريد وجميع أندية لا ليغا.</p>
-            <p><strong>🇪🇺 دوري أبطال أوروبا:</strong> نتائج ومواعيد جميع مباريات يويفا من دور المجموعات حتى النهائي.</p>
-            <p><strong>🇮🇹 الدوري الإيطالي:</strong> نتائج يوفنتوس، إنتر ميلان، ميلان، نابولي — الكالتشيو بالكامل.</p>
-            <p><strong>🇩🇪 الدوري الألماني:</strong> نتائج بايرن ميونخ، دورتموند، لايبزيغ — البوندسليغا.</p>
-            <p><strong>🇫🇷 الدوري الفرنسي:</strong> نتائج باريس سان جيرمان، مارسيليا، ليون — الدوري الفرنسي.</p>
-            <p><strong>🌐 البطولات الدولية:</strong> كأس العالم، يورو، كوبا أمريكا، كأس أمم أفريقيا — جميع النتائج والمواعيد.</p>
-        </section>
 
     </main>
 
