@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دوف سبورت – بث مباشر مباريات اليوم | Dof Sport</title>
+    <meta name="description" content="دوف سبورت – منصتك الأولى لمشاهدة مباريات اليوم بث مباشر مجاناً. Dof Sport يقدم جميع البطولات الكبرى بجودة عالية." />
+    <meta name="theme-color" content="#0a1f3f" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='16' fill='%230a1f3f'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-size='20' fill='white'%3E⚽%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #0a1f3f;
+            --accent: #f04e30;
+            --gold: #f5b042;
+            --bg: #f4f7fc;
+            --surface: #fff;
+            --surface-alt: #f0f4fa;
+            --border: #e2e8f0;
+            --text: #1e293b;
+            --text-secondary: #475569;
+            --radius: 16px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.05);
+            --transition: 0.3s ease;
+        }
+        .dark {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --surface-alt: #172033;
+            --border: #2d3a50;
+            --text: #f1f5f9;
+            --text-secondary: #cbd5e1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            direction: rtl;
+            transition: background var(--transition);
+        }
+        .nav {
+            background: linear-gradient(135deg, #05142a, var(--primary));
+            padding: 0 24px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            color: #fff;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+            font-size: 24px;
+        }
+        .nav-logo {
+            width: 42px;
+            height: 42px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 24px;
+        }
+        .hero {
+            background: radial-gradient(circle at 30% 20%, #1e3a6b, #05142a);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .hero h1 { font-size: clamp(28px, 6vw, 42px); font-weight: 900; margin-bottom: 10px; }
+        .hero h1 em { color: var(--gold); font-style: normal; }
+        .hero p { opacity: 0.9; margin-bottom: 20px; font-size: 16px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .filters input, .filters select {
+            padding: 10px 15px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        .filters input:focus, .filters select:focus { border-color: var(--accent); outline: none; }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            user-select: none;
+            font-size: 14px;
+        }
+        .reset-btn {
+            background: #64748b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .reset-btn:hover { background: #475569; }
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .match-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .match-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .match-card.live { border: 2px solid #22c55e; }
+        .card-header {
+            background: var(--surface-alt);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .league { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; }
+        .league img { width: 20px; height: 20px; border-radius: 4px; }
+        .status { font-size: 12px; font-weight: 700; padding: 3px 12px; border-radius: 20px; }
+        .status.live { background: #f0fdf4; color: #16a34a; }
+        .status.upcoming { background: #eff6ff; color: #2563eb; }
+        .status.finished { background: #f1f5f9; color: #64748b; }
+        .card-body {
+            display: flex;
+            align-items: center;
+            padding: 20px 15px;
+        }
+        .team {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .team img { width: 55px; height: 55px; object-fit: contain; transition: transform 0.2s; }
+        .match-card:hover .team img { transform: scale(1.1); }
+        .team-name { font-weight: 800; font-size: 14px; margin-top: 8px; }
+        .center { text-align: center; }
+        .score { font-size: 26px; font-weight: 900; letter-spacing: 2px; }
+        .score.live { color: #16a34a; }
+        .time { font-weight: 800; font-size: 18px; color: var(--accent); }
+        .time-label { font-size: 11px; opacity: 0.7; }
+        .card-footer {
+            background: var(--surface-alt);
+            padding: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+        }
+        .play-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition);
+            cursor: pointer;
+        }
+        .match-card:hover .play-overlay { opacity: 1; }
+        .play-overlay.disabled {
+            pointer-events: none;
+            opacity: 0 !important;
+        }
+        .play-icon {
+            width: 50px; height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+        }
+        .dark-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 99;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        @media(max-width:600px) {
+            .matches-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-brand">
+        <div class="nav-logo">⚽</div>
+        <span>Dof Sport</span>
+    </div>
+    <span>بث مباشر مجاني</span>
+</nav>
+
+<div class="hero">
+    <h1>دوف سبورت – <em>مباريات اليوم</em> بث مباشر</h1>
+    <p>شاهد أقوى المباريات بجودة HD على Dof Sport. دوري أبطال أوروبا، الدوري الإنجليزي، الليغا، كأس العالم 2026 والمزيد – بدون اشتراك.</p>
+</div>
+
+<main class="container">
+    <div class="top-bar">
+        <h2 style="display:flex;align-items:center;gap:10px;">
+            <span style="width:12px;height:12px;background:#22c55e;border-radius:50%;animation:pulse 1.8s infinite;"></span>
+            مباريات اليوم
+        </h2>
+        <select id="timezoneSelect" style="padding:10px;border-radius:12px;border:2px solid var(--border);background:var(--surface);color:var(--text);">
+            <option value="auto">تلقائي (حسب جهازك)</option>
+            <option value="0">جرينتش GMT+0</option>
+            <option value="1">الجزائر / تونس GMT+1</option>
+            <option value="2">القاهرة GMT+2</option>
+            <option value="3">الرياض / بغداد GMT+3</option>
+        </select>
+    </div>
+
+    <div class="filters">
+        <input type="text" id="searchInput" placeholder="🔍 ابحث عن فريق أو دوري..." style="flex:2; min-width:200px;">
+        <label class="checkbox-label">
+            <input type="checkbox" id="liveOnlyCheck"> المباشر فقط
+        </label>
+        <select id="leagueFilterSelect" style="flex:1; min-width:180px;">
+            <option value="">كل الدوريات</option>
+        </select>
+        <button class="reset-btn" id="resetFiltersBtn">إعادة ضبط</button>
+    </div>
+
+    <div id="matchesContainer" class="matches-grid"></div>
+    <div id="loadingMsg" style="text-align:center;padding:60px;color:var(--text-secondary);">⏳ جاري التحميل...</div>
+    <div id="errorMsg" style="display:none;text-align:center;padding:60px;color:var(--accent);">⚠️ تعذر تحميل المباريات</div>
+</main>
+
+<footer>
+    <strong>⚽ Dof Sport – بث مباشر مباريات اليوم</strong><br>
+    <small>© 2026 Dof Sport. جميع الحقوق محفوظة.</small>
+</footer>
+
+<button class="dark-toggle" id="darkModeToggle">🌓</button>
+
+<script>
+(function() {
+    const API = 'https://ws.kora-api.space/';
+    const TEAM_IMG = 'https://cdn.kora-api.space/uploads/team/';
+    const LEAGUE_IMG = 'https://cdn.kora-api.space/uploads/league/';
+    const STREAM_PROXY = 'https://strm01.app/';
+    const FALLBACK_IMG = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70"%3E%3Crect fill="%23e2e8f0" width="70" height="70" rx="8"/%3E%3Ctext x="50%25" y="55%25" text-anchor="middle" dominant-baseline="middle" font-size="28"%3E⚽%3C/text%3E%3C/svg%3E';
+
+    const container = document.getElementById('matchesContainer');
+    const loadingEl = document.getElementById('loadingMsg');
+    const errorEl = document.getElementById('errorMsg');
+    let gmtTimesMap = new Map();
+    let allMatches = [];
+
+    function getToday() { return new Date().toISOString().split('T')[0]; }
+    function ts() { const d = new Date(); return `${d.getFullYear()}${(d.getMonth()+1+'').padStart(2,'0')}${(d.getDate()+'').padStart(2,'0')}${(d.getHours()+'').padStart(2,'0')}${(d.getMinutes()+'').padStart(2,'0')}`; }
+
+    function statusInfo(s) {
+        const map = {
+            '1': { cls: 'live', text: 'مباشر 🔴', badge: 'live' },
+            '2': { cls: 'finished', text: 'انتهت', badge: 'finished' },
+            '3': { cls: 'not-started', text: 'قريباً', badge: 'upcoming' },
+            '0': { cls: 'not-started', text: 'لم تبدأ', badge: 'upcoming' }
+        };
+        return map[s] || map['0'];
+    }
+
+    function isValidRedirectUrl(url) {
+        if (!url || !url.trim()) return false;
+        const trimmed = url.trim();
+        return /^https?:\/\//i.test(trimmed) && !/\.(exe|dll|bat|sh|ps1|apk|dmg)$/i.test(trimmed);
+    }
+
+    function buildCard(m) {
+        const st = statusInfo(m.status);
+        const [homeScore, awayScore] = (m.score && m.score !== '-') ? m.score.split(' - ') : ['-', '-'];
+        const liveClass = m.status == '1' ? ' live' : '';
+
+        let streamUrl = '';
+        const redirect = isValidRedirectUrl(m.redirect_url) ? m.redirect_url.trim() : null;
+        if (redirect) {
+            streamUrl = redirect;
+        } else if (m.active == 1 && m.has_channels == 1) {
+            // التعديل هنا: استخدام ?m=id&lang=ar بدلاً من l=ar
+            streamUrl = `${STREAM_PROXY}?m=${m.id}&lang=ar`;
+        }
+
+        const target = streamUrl ? 'target="_blank" rel="noopener"' : '';
+        const href = streamUrl || '#';
+        const overlayClass = streamUrl ? 'play-overlay' : 'play-overlay disabled';
+
+        const leagueLogo = m.league_logo ? `<img src="${LEAGUE_IMG}${m.league_logo}" alt="" onerror="this.style.display='none'">` : '';
+
+        return `
+        <div class="match-card${liveClass}" data-status="${m.status}" data-league="${m.league_en || ''}">
+            <div class="card-header">
+                <div class="league">${leagueLogo} ${m.league_en || 'دوري'}</div>
+                <span class="status ${st.badge}">${st.text}</span>
+            </div>
+            <div class="card-body">
+                <div class="team">
+                    <img src="${m.home_logo ? TEAM_IMG + m.home_logo : FALLBACK_IMG}" alt="${m.home_en || ''}" onerror="this.src='${FALLBACK_IMG}'">
+                    <div class="team-name">${m.home_en || 'الفريق الأول'}</div>
+                </div>
+                <div class="center">
+                    ${(m.status == '1' || m.status == '2') ? `<div class="score${m.status=='1'?' live':''}">${homeScore} - ${awayScore}</div>` : ''}
+                    <div class="time" data-gmt="${m.time}">${m.time || '--:--'}</div>
+                    <div class="time-label">${m.status == '1' ? 'شوط 2' : (m.status=='2'?'انتهت':'موعد المباراة')}</div>
+                </div>
+                <div class="team">
+                    <img src="${m.away_logo ? TEAM_IMG + m.away_logo : FALLBACK_IMG}" alt="${m.away_en || ''}" onerror="this.src='${FALLBACK_IMG}'">
+                    <div class="team-name">${m.away_en || 'الفريق الثاني'}</div>
+                </div>
+            </div>
+            <div class="card-footer">⚡ Dof Sport – بث مباشر مجاني</div>
+            <a href="${href}" class="${overlayClass}" ${target}>
+                <div class="play-icon">${streamUrl ? '▶' : '🚫'}</div>
+            </a>
+        </div>`;
+    }
+
+    function renderMatches(matches) {
+        container.innerHTML = matches.map(buildCard).join('');
+        collectGMTTimes();
+        applyTimezone();
+        populateLeagueFilter();
+    }
+
+    function collectGMTTimes() {
+        gmtTimesMap.clear();
+        container.querySelectorAll('.time').forEach(el => {
+            const t = el.getAttribute('data-gmt');
+            if (t && /\d{2}:\d{2}/.test(t)) gmtTimesMap.set(el, t);
+        });
+    }
+
+    function applyTimezone() {
+        let stored = localStorage.getItem('dof_tz_offset') || 'auto';
+        let offset;
+        if (stored === 'auto') {
+            offset = -new Date().getTimezoneOffset() / 60;
+        } else {
+            offset = parseFloat(stored);
+            if (isNaN(offset)) offset = 0;
+        }
+
+        gmtTimesMap.forEach((gmt, el) => {
+            const [h, m] = gmt.split(':').map(Number);
+            const totalMinutes = h * 60 + m + Math.round(offset * 60);
+            let nh = Math.floor(totalMinutes / 60);
+            const nm = totalMinutes % 60;
+            if (nh >= 24) nh -= 24;
+            else if (nh < 0) nh += 24;
+            el.textContent = `${(nh+'').padStart(2,'0')}:${(nm+'').padStart(2,'0')}`;
+        });
+    }
+
+    function populateLeagueFilter() {
+        const leagues = new Set();
+        container.querySelectorAll('.match-card').forEach(c => {
+            const league = c.dataset.league;
+            if (league) leagues.add(league);
+        });
+        const sel = document.getElementById('leagueFilterSelect');
+        sel.innerHTML = '<option value="">كل الدوريات</option>';
+        [...leagues].sort().forEach(l => {
+            sel.innerHTML += `<option value="${l}">${l}</option>`;
+        });
+    }
+
+    function applyFilters() {
+        const search = document.getElementById('searchInput').value.toLowerCase().trim();
+        const liveOnly = document.getElementById('liveOnlyCheck').checked;
+        const league = document.getElementById('leagueFilterSelect').value;
+
+        container.querySelectorAll('.match-card').forEach(card => {
+            let show = true;
+            if (search && !card.innerText.toLowerCase().includes(search)) show = false;
+            if (liveOnly && !card.classList.contains('live')) show = false;
+            if (league && card.dataset.league !== league) show = false;
+            card.style.display = show ? '' : 'none';
+        });
+    }
+
+    async function loadMatches() {
+        loadingEl.style.display = 'block';
+        errorEl.style.display = 'none';
+        container.innerHTML = '';
+        try {
+            const res = await fetch(`${API}api/matches/${getToday()}/ar?t=${ts()}`);
+            if (!res.ok) throw new Error('فشل');
+            const data = await res.json();
+            allMatches = data.matches || [];
+            if (!allMatches.length) {
+                loadingEl.innerHTML = '😴 لا توجد مباريات اليوم.';
+                return;
+            }
+            renderMatches(allMatches);
+            loadingEl.style.display = 'none';
+        } catch (e) {
+            loadingEl.style.display = 'none';
+            errorEl.style.display = 'block';
+        }
+    }
+
+    function initTimezone() {
+        const select = document.getElementById('timezoneSelect');
+        let stored = localStorage.getItem('dof_tz_offset');
+
+        if (!stored) {
+            stored = 'auto';
+            localStorage.setItem('dof_tz_offset', 'auto');
+        }
+
+        if (stored === 'auto') {
+            select.value = 'auto';
+        } else {
+            if (!select.querySelector(`option[value="${stored}"]`)) {
+                const option = document.createElement('option');
+                option.value = stored;
+                const num = parseFloat(stored);
+                option.textContent = `GMT${num >= 0 ? '+' + num : num} (مخصص)`;
+                select.appendChild(option);
+            }
+            select.value = stored;
+        }
+    }
+
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('liveOnlyCheck').addEventListener('change', applyFilters);
+    document.getElementById('leagueFilterSelect').addEventListener('change', applyFilters);
+    document.getElementById('resetFiltersBtn').addEventListener('click', () => {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('liveOnlyCheck').checked = false;
+        document.getElementById('leagueFilterSelect').value = '';
+        applyFilters();
+    });
+
+    document.getElementById('timezoneSelect').addEventListener('change', function() {
+        localStorage.setItem('dof_tz_offset', this.value);
+        applyTimezone();
+    });
+
+    document.getElementById('darkModeToggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+    });
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            initTimezone();
+            loadMatches();
+        });
+    } else {
+        initTimezone();
+        loadMatches();
+    }
+})();
+</script>
+</body>
+</html>
