@@ -1,1169 +1,749 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>نتائج المباريات ومواعيدها | جدول مباريات اليوم مباشر 2026</title>
-    <meta name="description" content="موقع مرتب لنتائج المباريات وأوقاتها — تابع نتائج مباريات اليوم لحظة بلحظة، جداول المباريات القادمة، ونتائج جميع البطولات الكبرى. دوري أبطال أوروبا، الدوري الإنجليزي، الإسباني والمزيد.">
-    <meta name="keywords" content="نتائج المباريات,مواعيد المباريات,جدول مباريات اليوم,نتائج كرة القدم,مباريات اليوم,نتائج مباشرة,جدول المباريات,نتائج دوري أبطال أوروبا,نتائج الدوري الإنجليزي,نتائج الدوري الإسباني,مواعيد مباريات الغد">
-    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
-    <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
-    <meta name="theme-color" content="#0f3460">
-
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='16' fill='%230f3460'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-size='20'%3E⚽%3C/text%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='16' fill='%230f3460'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-size='20'%3E⚽%3C/text%3E%3C/svg%3E">
-
-    <link rel="preconnect" href="https://ws.kora-api.space" crossorigin>
-    <link rel="preconnect" href="https://cdn.kora-api.space" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn.kora-api.space">
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "نتائج ومواعيد المباريات",
-            "url": "https://example.com/",
-            "description": "موقع متخصص في عرض نتائج المباريات وأوقاتها — بدون بثوث، فقط نتائج وجداول.",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://example.com/?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
-        }
-    </script>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دوف سبورت – بث مباشر مباريات اليوم | Dof Sport</title>
+    <meta name="description" content="دوف سبورت – منصتك الأولى لمشاهدة مباريات اليوم بث مباشر مجاناً. جميع البطولات الكبرى بجودة عالية." />
+    <meta name="theme-color" content="#da251d" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
         :root {
-            --primary: #0f3460;
-            --primary-light: #1a4b8c;
-            --accent: #e94560;
-            --accent-glow: #ff6b81;
-            --gold: #f0a500;
-            --bg: #e8f0fe;
-            --surface: #ffffff;
-            --surface-alt: #f0f6ff;
-            --border: #d4e2f9;
-            --text: #0a2647;
-            --text-secondary: #3a5780;
-            --text-muted: #6b7fa0;
-            --radius-sm: 10px;
-            --radius: 14px;
-            --radius-lg: 18px;
-            --shadow-sm: 0 1px 3px rgba(15, 52, 96, 0.06);
-            --shadow: 0 2px 8px rgba(15, 52, 96, 0.08);
-            --shadow-md: 0 6px 20px rgba(15, 52, 96, 0.12);
-            --shadow-lg: 0 12px 32px rgba(15, 52, 96, 0.16);
-            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-dark: #333333;
+            --text-gray: #777777;
+            --red-main: #da251d;
+            --red-dark: #c62828;
+            --btn-tomorrow: #8d6e63;
+            --btn-yesterday: #0d47a1;
+            --border-color: #e5e5e5;
+            --shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
-        *,
-        ::before,
-        ::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        .dark {
+            --bg-color: #1a1a2e;
+            --card-bg: #16213e;
+            --text-dark: #e0e0e0;
+            --text-gray: #aaa;
+            --border-color: #2a2a4a;
+            --shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', 'Almarai', -apple-system, BlinkMacSystemFont, Tahoma, Arial, sans-serif;
-            background: linear-gradient(160deg, #dbeafe 0%, #bfdbfe 30%, #e0f2fe 70%, #eff6ff 100%);
-            background-attachment: fixed;
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100svh;
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
             direction: rtl;
-            position: relative;
-        }
-        body::before {
-            content: '';
-            position: fixed;
-            top: -150px;
-            left: -150px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -150px;
-            right: -150px;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        img {
-            max-width: 100%;
-            display: block;
-        }
-        a {
-            color: inherit;
-            text-decoration: none;
+            line-height: 1.5;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        /* ── NAVIGATION ── */
-        .nav {
-            background: linear-gradient(135deg, #0a2647 0%, #0f3460 50%, #1a4b8c 100%);
+        /* الشريط العلوي (Navbar) */
+        .navbar {
+            background: #ffffff;
             padding: 0 20px;
-            height: 60px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 20px rgba(15, 52, 96, 0.35);
+            border-bottom: 1px solid #e5e5e5;
         }
-        .nav::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd, #60a5fa, #3b82f6);
-        }
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-            font-weight: 800;
-            font-size: 20px;
-            letter-spacing: -0.3px;
-        }
-        .nav-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-        }
-        .nav-brand-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.15;
-        }
-        .nav-brand-main {
-            font-size: 17px;
-            font-weight: 800;
-            color: #fff;
-        }
-        .nav-brand-sub {
-            font-size: 11px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.75);
-            letter-spacing: 0.3px;
-        }
-        .nav-badge {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 20px;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
-            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
-            animation: badge-glow 3s ease-in-out infinite;
-        }
-        @keyframes badge-glow {
-            0%,
-            100% {
-                box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
-            }
-            50% {
-                box-shadow: 0 2px 22px rgba(59, 130, 246, 0.6);
-            }
+        .dark .navbar {
+            background: #0f3460;
+            border-bottom: 1px solid #1a1a4a;
         }
 
-        /* ── HERO ── */
-        .hero {
-            background: linear-gradient(150deg, #0a2647 0%, #0f3460 35%, #1a4b8c 65%, #2563eb 100%);
-            color: #fff;
-            padding: 28px 20px 32px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            right: -60px;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(96, 165, 250, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd, #60a5fa, #3b82f6);
-        }
-        .hero h1 {
-            font-size: clamp(22px, 5vw, 36px);
+        .navbar-brand .logo {
+            background: var(--red-main);
+            color: #ffffff;
             font-weight: 900;
-            line-height: 1.25;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
-        }
-        .hero h1 em {
-            font-style: normal;
-            color: #93c5fd;
-            position: relative;
-        }
-        .hero p {
-            font-size: clamp(13px, 2.8vw, 15px);
-            opacity: 0.9;
-            max-width: 560px;
-            margin: 0 auto 18px;
-            position: relative;
-            z-index: 1;
-            line-height: 1.7;
-        }
-        .chip-row {
-            display: flex;
-            gap: 7px;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-        .chip {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 6px 15px;
-            border-radius: 22px;
-            transition: background var(--transition), transform var(--transition);
-            white-space: nowrap;
-            backdrop-filter: blur(4px);
-        }
-        .chip:hover {
-            background: rgba(255, 255, 255, 0.22);
-            transform: translateY(-1px);
+            font-size: 22px;
+            padding: 8px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: block;
         }
 
-        /* ── MODAL OVERLAY ── */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 38, 71, 0.65);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s ease;
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: opacity 0.2s;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .modal-overlay.hidden {
-            display: none;
-        }
-        .modal-box {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 28px 24px 24px;
-            max-width: 480px;
-            width: 90%;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-            position: relative;
-            text-align: center;
-            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            left: 12px;
+        .social-icon.yt { background: #ff0000; }
+        .social-icon.tw { background: #1da1f2; }
+        .social-icon.fb { background: #4267b2; }
+        .social-icon.wa { background: #25d366; }
+        .social-icon.tg { background: #0088cc; }
+
+        .dark-toggle {
+            background: var(--red-main);
+            border: none;
+            color: #fff;
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: #f1f5f9;
-            border: none;
+            cursor: pointer;
+            font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            font-size: 20px;
-            color: #475569;
-            transition: background 0.2s, color 0.2s;
+            transition: background 0.2s;
         }
-        .modal-close:hover {
-            background: #e2e8f0;
-            color: #0f172a;
-        }
-        .modal-icon {
-            font-size: 50px;
-            margin-bottom: 10px;
-        }
-        .modal-box h3 {
-            font-size: 20px;
-            font-weight: 800;
-            color: #0f3460;
-            margin-bottom: 12px;
-        }
-        .modal-box p {
-            font-size: 15px;
-            color: #334155;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-        .modal-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #f59e0b, #fbbf24);
-            color: #1e293b;
-            font-weight: 700;
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            box-shadow: 0 8px 16px -4px rgba(245, 158, 11, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            font-size: 15px;
-        }
-        .modal-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 20px -6px rgba(217, 119, 6, 0.5);
-        }
+        .dark-toggle:hover { background: var(--red-dark); }
 
-        /* ── MAIN LAYOUT ── */
-        .wrap {
+        /* الحاوية الرئيسية */
+        .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 20px 16px;
-            position: relative;
-            z-index: 1;
+            padding: 20px 15px;
         }
 
-        /* ── DATE BAR ── */
-        .date-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
-            gap: 10px;
-            background: var(--surface);
-            padding: 14px 18px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
-        }
-        .date-bar h2 {
-            font-size: 15px;
-            font-weight: 800;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .live-dot {
-            width: 10px;
-            height: 10px;
-            background: #22c55e;
-            border-radius: 50%;
-            display: inline-block;
-            animation: pulse-dot 1.8s infinite;
-            flex-shrink: 0;
-            box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
-        }
-        @keyframes pulse-dot {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.6);
-                opacity: 0.4;
-            }
-        }
-        .date-badge {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-secondary);
-            background: var(--surface-alt);
-            padding: 6px 14px;
-            border-radius: 20px;
-            white-space: nowrap;
-            border: 1px solid var(--border);
-        }
-
-        /* ── MATCHES GRID ── */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 16px;
-        }
-
-        /* ── MATCH CARD ── */
-        .card {
-            background: var(--surface);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: transform var(--transition), box-shadow var(--transition);
-            position: relative;
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #3b82f6, #60a5fa);
-            opacity: 0;
-            transition: opacity var(--transition);
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-        .card:hover::before {
-            opacity: 1;
-        }
-        .card.finished {
-            opacity: 0.7;
-        }
-        .card.live-card {
-            border: 2px solid #22c55e;
-            box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.1);
-            animation: live-border-glow 2.5s ease-in-out infinite;
-        }
-        .card.live-card::before {
-            background: linear-gradient(90deg, #22c55e, #4ade80);
-            opacity: 1;
-        }
-        @keyframes live-border-glow {
-            0%,
-            100% {
-                box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.08);
-            }
-            50% {
-                box-shadow: 0 0 0 12px rgba(34, 197, 94, 0.02);
-            }
-        }
-
-        /* Card Header */
-        .card-head {
-            background: var(--surface-alt);
-            border-bottom: 1px solid var(--border);
-            padding: 10px 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        .league-row {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            min-width: 0;
-            flex: 1;
-        }
-        .league-img {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-            flex-shrink: 0;
-            border-radius: 4px;
-        }
-        .league-name {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-secondary);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            letter-spacing: 0.2px;
-        }
-        .status-badge {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            white-space: nowrap;
-            flex-shrink: 0;
-            letter-spacing: 0.2px;
-        }
-        .status-live {
-            background: #f0fdf4;
-            color: #16a34a;
-            border: 1px solid #bbf7d0;
-        }
-        .status-upcoming {
-            background: #eff6ff;
-            color: #2563eb;
-            border: 1px solid #bfdbfe;
-        }
-        .status-finished {
-            background: #f9fafb;
-            color: #6b7280;
-            border: 1px solid #e5e7eb;
-        }
-        .live-indicator {
-            display: inline-block;
-            width: 7px;
-            height: 7px;
-            background: #16a34a;
-            border-radius: 50%;
-            margin-left: 4px;
-            animation: pulse-dot 1.5s infinite;
-        }
-
-        /* Card Body */
-        .card-body {
-            padding: 18px 14px 14px;
-        }
-        .teams {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            gap: 10px;
-        }
-        .team {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-        .team-logo {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            transition: transform var(--transition);
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
-        }
-        .card:hover .team-logo {
-            transform: scale(1.08);
-        }
-        .team-name {
-            font-size: 13px;
-            font-weight: 700;
-            text-align: center;
-            line-height: 1.3;
-            color: var(--text);
-            max-width: 110px;
-        }
-        .center-col {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3px;
-            min-width: 70px;
-        }
-        .score {
-            font-size: 26px;
-            font-weight: 900;
-            color: var(--primary);
-            letter-spacing: 3px;
-            font-variant-numeric: tabular-nums;
-            font-family: 'Segoe UI', 'Almarai', Tahoma, sans-serif;
-        }
-        .score.live-score {
-            color: #16a34a;
-            animation: score-pulse 2s ease-in-out infinite;
-        }
-        @keyframes score-pulse {
-            0%,
-            100% {
-                color: #16a34a;
-            }
-            50% {
-                color: #22c55e;
-            }
-        }
-        .match-time {
-            font-size: 14px;
-            font-weight: 800;
-            color: #2563eb;
-            white-space: nowrap;
-        }
-        .match-time-label {
-            font-size: 10px;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        .match-minute {
-            font-size: 10px;
-            font-weight: 700;
-            color: #16a34a;
-            background: #f0fdf4;
-            padding: 2px 8px;
-            border-radius: 10px;
-            margin-top: 2px;
-            border: 1px solid #bbf7d0;
-        }
-        .local-time-note {
-            font-size: 9px;
-            color: #2563eb;
-            background: #eff6ff;
-            padding: 2px 6px;
-            border-radius: 8px;
-            margin-top: 2px;
-            display: inline-block;
-        }
-
-        /* Card Footer */
-        .card-foot {
-            border-top: 1px solid var(--border);
-            padding: 10px 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: var(--surface-alt);
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-secondary);
-            letter-spacing: 0.3px;
-        }
-        .card-foot svg {
-            flex-shrink: 0;
-        }
-        .card-foot .result-detail {
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* ── STATES ── */
-        .state {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-        }
-        .state-icon {
-            font-size: 52px;
-            margin-bottom: 16px;
-        }
-        .state h3 {
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--text);
-        }
-        .state p {
-            font-size: 14px;
-        }
-        .spinner {
-            width: 44px;
-            height: 44px;
-            border: 3px solid #d4e2f9;
-            border-top-color: #2563eb;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-            margin: 0 auto 16px;
-        }
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* ── INFO SECTIONS ── */
-        .section {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            margin-top: 28px;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
-            border-radius: 0 var(--radius-lg) 0 0;
-            pointer-events: none;
-        }
-        .section h2 {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 14px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #d4e2f9;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            position: relative;
-        }
-        .section h2 .section-icon {
-            font-size: 22px;
-        }
-        .section p {
-            font-size: 14px;
-            color: #4a5580;
-            line-height: 1.85;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        .section p:last-child {
-            margin-bottom: 0;
-        }
-        .section strong {
-            color: var(--primary);
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 14px;
-            margin-top: 6px;
-        }
-        .info-card {
-            background: var(--surface-alt);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 16px;
+        /* شريط الفلاتر الرئيسي */
+        .filter-group-left {
             display: flex;
             gap: 12px;
-            align-items: flex-start;
-            transition: transform var(--transition), box-shadow var(--transition);
+            flex-wrap: wrap;
         }
-        .info-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            border-color: #93c5fd;
-        }
-        .info-icon {
-            font-size: 26px;
-            flex-shrink: 0;
-            line-height: 1;
-        }
-        .info-card strong {
+        .filter-btn {
+            border: none;
+            border-radius: 6px;
+            padding: 8px 20px;
+            font-weight: 700;
             font-size: 14px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            color: #fff;
+            transition: opacity 0.2s, transform 0.1s;
         }
-        .info-card span {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.6;
+        .filter-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-tomorrow { background: var(--btn-tomorrow); }
+        .btn-today { background: var(--red-main); }
+        .btn-yesterday { background: var(--btn-yesterday); }
+        .btn-important {
+            background: var(--red-main);
+            padding: 8px 25px;
         }
 
-        /* ── FOOTER ── */
-        footer {
-            background: linear-gradient(135deg, #0a2647 0%, #0f3460 50%, #1a4b8c 100%);
-            color: rgba(255, 255, 255, 0.8);
-            text-align: center;
-            padding: 28px 20px;
-            font-size: 13px;
-            margin-top: 32px;
-            position: relative;
-            z-index: 1;
+        /* شريط الفلاتر الإضافية */
+        .filters-row {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd, #60a5fa, #3b82f6);
+        .dark .filters-row { background: var(--card-bg); }
+
+        .filters-row input,
+        .filters-row select {
+            padding: 8px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fff;
+            color: var(--text-dark);
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.2s;
         }
-        footer strong {
+        .dark .filters-row input,
+        .dark .filters-row select {
+            background: #1a1a2e;
+            border-color: #2a2a4a;
+            color: #eee;
+        }
+        .filters-row input:focus,
+        .filters-row select:focus {
+            border-color: var(--red-main);
+            outline: none;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .reset-btn {
+            background: #64748b;
             color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .reset-btn:hover { background: #475569; }
+
+        /* بطاقات المباريات */
+        .matches-grid { display: flex; flex-direction: column; gap: 16px; }
+        
+        .match-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 1px solid var(--border-color);
+            transition: border-color 0.2s;
+        }
+        .match-card.live {
+            border-color: #22c55e;
+        }
+
+        .match-content {
+            padding: 20px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .team-info {
+            flex: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+        }
+
+        .team-logo {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+            margin-bottom: 4px;
+            border-radius: 50%;
+            background: #fff;
+        }
+
+        .sound-icon {
+            height: 24px;
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            margin-bottom: 4px;
+            opacity: 0.6;
+        }
+        .sound-icon span {
+            background: #999;
+            width: 4px;
+            display: inline-block;
+            border-radius: 2px;
+        }
+        .sound-icon span:nth-child(1) { height: 12px; }
+        .sound-icon span:nth-child(2) { height: 18px; }
+        .sound-icon span:nth-child(3) { height: 8px; }
+
+        .team-name {
+            font-weight: 800;
+            font-size: 16px;
+            color: var(--text-dark);
+        }
+
+        .match-center {
+            flex: 1.5;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score {
+            font-size: 22px;
+            font-weight: 900;
+            color: #111;
+            letter-spacing: 1px;
+        }
+        .dark .score { color: #eee; }
+        .score.live { color: #16a34a; }
+
+        .match-time {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-dark);
+            margin: 2px 0;
+        }
+
+        .status-badge {
+            background: #444;
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        .status-badge.live { background: #dc2626; }
+
+        .match-footer {
+            background: #f9f9f9;
+            border-top: 1px solid #e0e0e0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 8px 10px;
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+            font-weight: 600;
+        }
+        .dark .match-footer {
+            background: #1a1a2e;
+            border-top: 1px solid #2a2a4a;
+            color: #aaa;
+        }
+
+        /* طبقة التشغيل */
+        .play-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+        .match-card:hover .play-overlay { opacity: 1; }
+        .play-overlay.disabled {
+            pointer-events: none;
+            opacity: 0 !important;
+        }
+        .play-icon {
+            width: 50px; height: 50px;
+            background: var(--red-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+        }
+
+        /* زر العودة للأعلى */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            background: var(--red-main);
+            color: #fff;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            z-index: 999;
+        }
+        .scroll-top-btn:hover { background: var(--red-dark); transform: translateY(-3px); }
+
+        /* الفوتر */
+        .site-footer {
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 14px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .dark .site-footer {
+            background: #0f3460;
+            color: #aaa;
+            border-top: 1px solid #1a1a4a;
+        }
+        .site-footer strong {
+            color: var(--red-main);
             font-size: 16px;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
-        .foot-chips {
+        .footer-links {
+            margin-top: 10px;
             display: flex;
-            gap: 7px;
             justify-content: center;
+            gap: 20px;
             flex-wrap: wrap;
-            margin: 14px 0;
         }
-        .foot-chip {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 11px;
-            font-weight: 600;
-            padding: 5px 12px;
-            border-radius: 20px;
-            white-space: nowrap;
-            transition: background var(--transition);
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
         }
-        .foot-chip:hover {
-            background: rgba(255, 255, 255, 0.18);
+        .footer-links a:hover {
+            color: var(--red-main);
         }
 
-        /* ── RESPONSIVE ── */
-        @media(max-width: 500px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            .team-logo {
-                width: 40px;
-                height: 40px;
-            }
-            .score {
-                font-size: 22px;
-                letter-spacing: 2px;
-            }
-            .card-body {
-                padding: 14px 10px 10px;
-            }
-            .teams {
-                gap: 6px;
-            }
-            .nav-brand-main {
-                font-size: 15px;
-            }
-            .nav {
-                padding: 0 12px;
-                height: 54px;
-            }
-            .hero {
-                padding: 22px 14px 26px;
-            }
-            .wrap {
-                padding: 14px 10px;
-            }
-            .date-bar {
-                padding: 12px 14px;
-            }
-            .section {
-                padding: 18px;
-            }
-            .modal-box {
-                padding: 24px 18px 20px;
-            }
+        @media(max-width: 768px) {
+            .navbar { flex-wrap: wrap; height: auto; padding: 15px; gap: 15px; justify-content: center; }
+            .navbar-links { order: 3; width: 100%; justify-content: center; gap: 15px; font-size: 14px; }
+            .filter-bar { flex-direction: column; align-items: stretch; }
+            .filter-group-left { justify-content: center; }
+            .btn-important { width: 100%; text-align: center; }
+            .filters-row { flex-direction: column; align-items: stretch; }
+            .filters-row input, .filters-row select { width: 100%; }
         }
-        @media(prefers-reduced-motion:reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-                scroll-behavior: auto !important;
-            }
+        @media(max-width: 480px) {
+            .match-content { flex-direction: column; gap: 15px; }
+            .team-logo { width: 30px; height: 30px; }
+            .match-footer { grid-template-columns: 1fr; gap: 5px; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav" aria-label="الملاحة الرئيسية">
-        <div class="nav-brand">
-            <div class="nav-icon" aria-hidden="true">⚽</div>
-            <div class="nav-brand-text">
-                <span class="nav-brand-main">جدول المباريات</span>
-                <span class="nav-brand-sub">نتائج ومواعيد</span>
+<header class="navbar">
+    <div class="navbar-brand">
+        <a href="#" class="logo">DofSport</a>
+    </div>
+    <div class="navbar-actions">
+        <button class="dark-toggle" id="darkModeToggle" title="الوضع الليلي">🌙</button>
+    </div>
+</header>
+
+<main class="container">
+    <div class="filters-row">
+        <input type="text" id="searchInput" placeholder="🔍 ابحث عن فريق أو دوري..." style="flex:2; min-width:180px;">
+        <select id="leagueFilterSelect" style="flex:1; min-width:150px;">
+            <option value="">كل الدوريات</option>
+        </select>
+        <label class="checkbox-label">
+            <input type="checkbox" id="liveOnlyCheck"> المباشر فقط
+        </label>
+        <select id="timezoneSelect" style="min-width:150px;">
+            <option value="auto">تلقائي (حسب جهازك)</option>
+            <option value="0">جرينتش GMT+0</option>
+            <option value="1">الجزائر / تونس GMT+1</option>
+            <option value="2">القاهرة GMT+2</option>
+            <option value="3">الرياض / بغداد GMT+3</option>
+        </select>
+        <button class="reset-btn" id="resetFiltersBtn">إعادة ضبط</button>
+    </div>
+
+    <div id="matchesContainer" class="matches-grid"></div>
+    <div id="loadingMsg" style="text-align:center;padding:60px;color:var(--text-gray);">⏳ جاري التحميل...</div>
+    <div id="errorMsg" style="display:none;text-align:center;padding:60px;color:var(--red-main);">⚠️ تعذر تحميل المباريات</div>
+
+</main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <strong>⚽ Dof Sport – بث مباشر مباريات اليوم</strong>
+        <small>جميع الحقوق محفوظة © 2026</small>
+        <div class="footer-links">
+            <a href="#">من نحن</a>
+            <a href="#">سياسة الخصوصية</a>
+            <a href="#">اتصل بنا</a>
+        </div>
+    </div>
+</footer>
+
+<button class="scroll-top-btn" id="scrollTopBtn" title="العودة للأعلى">↑</button>
+
+<script>
+(function() {
+    const API = 'https://ws.kora-api.space/';
+    const TEAM_IMG = 'https://cdn.kora-api.space/uploads/team/';
+    const STREAM_PROXY = 'https://strm01.app/';
+    const FALLBACK_IMG = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70"%3E%3Crect fill="%23e2e8f0" width="70" height="70" rx="8"/%3E%3Ctext x="50%25" y="55%25" text-anchor="middle" dominant-baseline="middle" font-size="28"%3E⚽%3C/text%3E%3C/svg%3E';
+
+    const container = document.getElementById('matchesContainer');
+    const loadingEl = document.getElementById('loadingMsg');
+    const errorEl = document.getElementById('errorMsg');
+    let gmtTimesMap = new Map();
+
+    function getDateOffset(days) {
+        const d = new Date();
+        d.setDate(d.getDate() + days);
+        return d.toISOString().split('T')[0];
+    }
+    window.getDateOffset = getDateOffset;
+
+    function ts() {
+        const d = new Date();
+        return `${d.getFullYear()}${(d.getMonth()+1+'').padStart(2,'0')}${(d.getDate()+'').padStart(2,'0')}${(d.getHours()+'').padStart(2,'0')}${(d.getMinutes()+'').padStart(2,'0')}`;
+    }
+
+    function isValidRedirectUrl(url) {
+        if (!url || !url.trim()) return false;
+        const trimmed = url.trim();
+        return /^https?:\/\//i.test(trimmed) && !/\.(exe|dll|bat|sh|ps1|apk|dmg)$/i.test(trimmed);
+    }
+
+    function statusInfo(s) {
+        const map = {
+            '1': { cls: 'live', text: 'مباشر 🔴' },
+            '2': { cls: 'finished', text: 'انتهت المباراة' },
+            '3': { cls: 'upcoming', text: 'قريباً' },
+            '0': { cls: 'upcoming', text: 'لم تبدأ' }
+        };
+        return map[s] || map['0'];
+    }
+
+    function buildCard(m) {
+        const st = statusInfo(m.status);
+        const [homeScore, awayScore] = (m.score && m.score !== '-') ? m.score.split(' - ') : ['-', '-'];
+        
+        const homeTeam = m.home_ar || m.home_en || 'الفريق الأول';
+        const awayTeam = m.away_ar || m.away_en || 'الفريق الثاني';
+        const leagueName = m.league_ar || m.league_en || 'دوري';
+        
+        // تعديل اسم القناة لتجنب تكرار اسم الفريق
+        let channelText = (m.channels && m.channels.length > 0) ? m.channels[0].name : 'غير معروف';
+        if (channelText === homeTeam || channelText === awayTeam) {
+            channelText = '⚡ Dof Sport HD';
+        }
+
+        const liveClass = m.status == '1' ? ' live' : '';
+
+        // روابط البث
+        let streamUrl = '';
+        const redirect = isValidRedirectUrl(m.redirect_url) ? m.redirect_url.trim() : null;
+        if (redirect) {
+            streamUrl = redirect;
+        } else if (m.active == 1 && m.has_channels == 1) {
+            streamUrl = `${STREAM_PROXY}?m=${m.id}&lang=ar`;
+        }
+
+        const target = streamUrl ? 'target="_blank" rel="noopener"' : '';
+        const href = streamUrl || '#';
+        const overlayClass = streamUrl ? 'play-overlay' : 'play-overlay disabled';
+
+        const gmtTime = m.time || '--:--';
+
+        return `
+        <div class="match-card${liveClass}" data-status="${m.status}" data-league="${leagueName}" data-gmt="${gmtTime}">
+            <div class="match-content">
+                <div class="team-info">
+                    <div class="sound-icon">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <img src="${m.home_logo ? TEAM_IMG + m.home_logo : FALLBACK_IMG}" 
+                         alt="${homeTeam}" 
+                         class="team-logo" 
+                         loading="lazy"
+                         onerror="this.src='${FALLBACK_IMG}'">
+                    <div class="team-name">${homeTeam}</div>
+                </div>
+                <div class="match-center">
+                    <div class="score${m.status=='1'?' live':''}">${homeScore} - ${awayScore}</div>
+                    <div class="match-time" data-gmt="${gmtTime}">${gmtTime}</div>
+                    <div class="status-badge ${st.cls}">${st.text}</div>
+                </div>
+                <div class="team-info">
+                    <div class="sound-icon">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <img src="${m.away_logo ? TEAM_IMG + m.away_logo : FALLBACK_IMG}" 
+                         alt="${awayTeam}" 
+                         class="team-logo" 
+                         loading="lazy"
+                         onerror="this.src='${FALLBACK_IMG}'">
+                    <div class="team-name">${awayTeam}</div>
+                </div>
             </div>
-        </div>
-        <span class="nav-badge">نتائج مباشرة</span>
-    </nav>
+            <div class="match-footer">
+                <div class="league-info">${leagueName}</div>
+                <div class="source-info">⚡ Dof Sport</div>
+                <div class="channel-info">${channelText}</div>
+            </div>
+            <a href="${href}" class="${overlayClass}" ${target}>
+                <div class="play-icon">${streamUrl ? '▶' : '🚫'}</div>
+            </a>
+        </div>`;
+    }
 
-    <div class="hero">
-        <h1>نتائج المباريات <em>وأوقاتها</em> — جدول مباريات اليوم</h1>
-        <p>موقع مرتب ومتكامل لعرض <strong>نتائج المباريات</strong> ومواعيدها فقط دون بثوث. تابع نتائج جميع البطولات الكبرى — دوري أبطال أوروبا، الدوري الإنجليزي، الإسباني، الإيطالي والمزيد.</p>
-        <div class="chip-row">
-            <span class="chip">نتائج مباشرة</span>
-            <span class="chip">جدول المباريات</span>
-            <span class="chip">مواعيد دقيقة</span>
-            <span class="chip">جميع البطولات</span>
-        </div>
-    </div>
+    function renderMatches(matches) {
+        container.innerHTML = matches.map(buildCard).join('');
+        collectGMTTimes();
+        applyTimezone();
+        populateLeagueFilter();
+        applyFilters();
+    }
 
-    <!-- نافذة التنبيه المنبثقة -->
-    <div id="notice-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="modal-box">
-            <button class="modal-close" onclick="document.getElementById('notice-modal').classList.add('hidden')" aria-label="إغلاق التنبيه">
-                ✕
-            </button>
-            <div class="modal-icon">📺</div>
-            <h3 id="modal-title">هذا الموقع جدول مباريات بدون بث</h3>
-            <p>هذا الموقع متخصص في عرض جداول المباريات والنتائج فقط، ولا يحتوي على روابط بث. إذا كنت تبحث عن صفحة تحتوي على جدول المباريات مدموجًا مع روابط البث، يمكنك الانتقال إليها بالضغط على الزر أدناه.</p>
-            <a href="https://doufani78-lgtm.github.io/DS/matchwhithlive.html" class="modal-link" target="_blank" rel="noopener">📋 انتقل لصفحة الجدول المدموج بروابط البث</a>
-        </div>
-    </div>
+    function collectGMTTimes() {
+        gmtTimesMap.clear();
+        container.querySelectorAll('.match-time').forEach(el => {
+            const t = el.getAttribute('data-gmt');
+            if (t && /\d{2}:\d{2}/.test(t)) gmtTimesMap.set(el, t);
+        });
+    }
 
-    <main class="wrap">
+    function applyTimezone() {
+        let stored = localStorage.getItem('dof_tz_offset') || 'auto';
+        let offset;
+        if (stored === 'auto') {
+            offset = -new Date().getTimezoneOffset() / 60;
+        } else {
+            offset = parseFloat(stored);
+            if (isNaN(offset)) offset = 0;
+        }
+        gmtTimesMap.forEach((gmt, el) => {
+            const [h, m] = gmt.split(':').map(Number);
+            const totalMinutes = h * 60 + m + Math.round(offset * 60);
+            let nh = Math.floor(totalMinutes / 60);
+            const nm = totalMinutes % 60;
+            if (nh >= 24) nh -= 24;
+            else if (nh < 0) nh += 24;
+            el.textContent = `${(nh+'').padStart(2,'0')}:${(nm+'').padStart(2,'0')}`;
+        });
+    }
 
-        <div class="date-bar">
-            <h2>
-                <span class="live-dot" aria-hidden="true"></span>
-                مباريات <span id="date-display">اليوم</span>
-            </h2>
-            <span class="date-badge" id="match-count">جاري التحميل…</span>
-        </div>
+    function populateLeagueFilter() {
+        const leagues = new Set();
+        container.querySelectorAll('.match-card').forEach(c => {
+            const league = c.dataset.league;
+            if (league) leagues.add(league);
+        });
+        const sel = document.getElementById('leagueFilterSelect');
+        sel.innerHTML = '<option value="">كل الدوريات</option>';
+        [...leagues].sort().forEach(l => {
+            sel.innerHTML += `<option value="${l}">${l}</option>`;
+        });
+    }
 
-        <div id="loading" class="state" role="status" aria-live="polite">
-            <div class="spinner" aria-hidden="true"></div>
-            <h3>جاري تحميل جدول المباريات…</h3>
-            <p>يتم جلب نتائج ومواعيد مباريات اليوم</p>
-        </div>
+    function applyFilters() {
+        const search = document.getElementById('searchInput').value.toLowerCase().trim();
+        const liveOnly = document.getElementById('liveOnlyCheck').checked;
+        const league = document.getElementById('leagueFilterSelect').value;
+        container.querySelectorAll('.match-card').forEach(card => {
+            let show = true;
+            if (search && !card.innerText.toLowerCase().includes(search)) show = false;
+            if (liveOnly && !card.classList.contains('live')) show = false;
+            if (league && card.dataset.league !== league) show = false;
+            card.style.display = show ? '' : 'none';
+        });
+    }
 
-        <div id="error" class="state" style="display:none" role="alert">
-            <div class="state-icon" aria-hidden="true">⚠️</div>
-            <h3>تعذّر تحميل بيانات المباريات</h3>
-            <p>يرجى تحديث الصفحة لإعادة تحميل جدول المباريات والنتائج.</p>
-        </div>
-
-        <div id="grid" class="grid" style="display:none" aria-label="قائمة مباريات اليوم"></div>
-
-    </main>
-
-    <footer>
-        <strong>⚽ جدول مباريات اليوم — نتائج ومواعيد كرة القدم</strong>
-        <div>نتائج مباشرة | مواعيد المباريات | بدون بثوث — معلومات فقط</div>
-        <div class="foot-chips">
-            <span class="foot-chip">نتائج المباريات</span>
-            <span class="foot-chip">جدول مباريات اليوم</span>
-            <span class="foot-chip">مواعيد كرة القدم</span>
-            <span class="foot-chip">نتائج مباشرة</span>
-            <span class="foot-chip">دوري أبطال أوروبا</span>
-            <span class="foot-chip">الدوري الإنجليزي</span>
-        </div>
-        <div style="opacity:.5;font-size:11px">© 2026 جدول مباريات اليوم. جميع الحقوق محفوظة. موقع نتائج ومواعيد فقط — لا بثوث.</div>
-    </footer>
-
-    <script>
-        (function() {
-            'use strict';
-            var API = 'https://ws.kora-api.space/';
-            var TIMG = 'https://cdn.kora-api.space/uploads/team/';
-            var LIMG = 'https://cdn.kora-api.space/uploads/league/';
-
-            var FALLBACK =
-                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Crect fill='%23f1f5f9' width='50' height='50' rx='8'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-size='24'%3E⚽%3C/text%3E%3C/svg%3E";
-
-            function pad(n) { return String(n).padStart(2, '0'); }
-
-            function today() { return new Date().toISOString().split('T')[0]; }
-
-            function ts() {
-                var d = new Date();
-                return '' + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + pad(d.getHours()) + pad(d
-                    .getMinutes());
+    async function loadMatches(date) {
+        loadingEl.style.display = 'block';
+        errorEl.style.display = 'none';
+        container.innerHTML = '';
+        try {
+            const res = await fetch(`${API}api/matches/${date}/ar?t=${ts()}`);
+            if (!res.ok) throw new Error('فشل');
+            const data = await res.json();
+            const allMatches = data.matches || [];
+            
+            if (!allMatches.length) {
+                loadingEl.innerHTML = '😴 لا توجد مباريات في هذا التاريخ.';
+                return;
             }
+            renderMatches(allMatches);
+            loadingEl.style.display = 'none';
+        } catch (e) {
+            loadingEl.style.display = 'none';
+            errorEl.style.display = 'block';
+        }
+    }
 
-            function getMatchStatus(s) {
-                s = parseInt(s);
-                if (s === 1) return { label: 'مباشر', cls: 'status-live', isLive: true, isFinished: false };
-                if (s === 2) return { label: 'انتهت', cls: 'status-finished', isLive: false, isFinished: true };
-                return { label: 'قادمة', cls: 'status-upcoming', isLive: false, isFinished: false };
+    function initTimezone() {
+        const select = document.getElementById('timezoneSelect');
+        let stored = localStorage.getItem('dof_tz_offset');
+        if (!stored) {
+            stored = 'auto';
+            localStorage.setItem('dof_tz_offset', 'auto');
+        }
+        if (stored === 'auto') {
+            select.value = 'auto';
+        } else {
+            if (!select.querySelector(`option[value="${stored}"]`)) {
+                const option = document.createElement('option');
+                option.value = stored;
+                const num = parseFloat(stored);
+                option.textContent = `GMT${num >= 0 ? '+' + num : num} (مخصص)`;
+                select.appendChild(option);
             }
+            select.value = stored;
+        }
+    }
 
-            function formatDateAr(isoDate) {
-                var days = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
-                var months = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر',
-                    'نوفمبر', 'ديسمبر'
-                ];
-                var d = new Date(isoDate + 'T00:00:00');
-                return days[d.getDay()] + '، ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
-            }
+    // ---- ربط الأحداث ----
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('liveOnlyCheck').addEventListener('change', applyFilters);
+    document.getElementById('leagueFilterSelect').addEventListener('change', applyFilters);
+    document.getElementById('resetFiltersBtn').addEventListener('click', () => {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('liveOnlyCheck').checked = false;
+        document.getElementById('leagueFilterSelect').value = '';
+        applyFilters();
+    });
+    document.getElementById('timezoneSelect').addEventListener('change', function() {
+        localStorage.setItem('dof_tz_offset', this.value);
+        applyTimezone();
+    });
 
-            // تحويل وقت المباراة (المفترض أنه UTC) إلى التوقيت المحلي للزائر باستخدام أرقام إنجليزية
-            function getLocalMatchTime(dateIso, timeStr) {
-                if (!timeStr || timeStr === '--:--' || timeStr.trim() === '') return null;
-                // نبني نص تاريخ+وقت بصيغة ISO بافتراض أن الوقت UTC
-                var dateTimeStr = dateIso + 'T' + timeStr + ':00Z';
-                var utcDate = new Date(dateTimeStr);
-                if (isNaN(utcDate.getTime())) return null;
-                // استخدام numberingSystem: 'latn' للحصول على أرقام إنجليزية (0-9)
-                return utcDate.toLocaleTimeString('ar-SA', { 
-                    hour: '2-digit', 
-                    minute: '2-digit', 
-                    hour12: false, 
-                    numberingSystem: 'latn' 
-                });
-            }
+    // الوضع الليلي
+    const darkToggle = document.getElementById('darkModeToggle');
+    const updateDarkIcon = () => {
+        darkToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    };
+    darkToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        updateDarkIcon();
+        localStorage.setItem('dof_dark_mode', document.body.classList.contains('dark') ? '1' : '0');
+    });
+    if (localStorage.getItem('dof_dark_mode') === '1') {
+        document.body.classList.add('dark');
+    }
+    updateDarkIcon();
 
-            function buildCard(m, matchDate) {
-                var st = getMatchStatus(m.status);
-                var liveClass = st.isLive ? ' live-card' : '';
-                var finishedClass = st.isFinished ? ' finished' : '';
+    // العودة للأعلى
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+        scrollBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-                // بناء المحتوى المركزي (النتيجة أو الوقت)
-                var centerContent = '';
-                if (st.isLive || st.isFinished) {
-                    var sc = m.score && m.score !== '-' ? m.score : '0 - 0';
-                    var scoreClass = st.isLive ? ' score live-score' : ' score';
-                    centerContent = '<div class="' + scoreClass + '">' + sc + '</div>';
-                    if (st.isLive && m.minute) {
-                        centerContent += '<div class="match-minute">د ' + m.minute + '</div>';
-                    }
-                } else {
-                    // مباراة قادمة: نحول وقتها إلى التوقيت المحلي بأرقام إنجليزية
-                    var localTime = getLocalMatchTime(matchDate, m.time);
-                    var displayTime = localTime || m.time || '--:--';
-                    var timeLabel = localTime ? 'بالتوقيت المحلي' : 'موعد الانطلاق';
-                    centerContent = '<div class="match-time">' + displayTime + '</div>' +
-                        '<div class="match-time-label">' + timeLabel + '</div>';
-                    if (localTime) {
-                        centerContent += '<div class="local-time-note">🕒 حسب توقيت جهازك</div>';
-                    }
-                }
-
-                // بناء التذييل
-                var footerContent = '';
-                if (st.isLive) {
-                    footerContent =
-                        '<div class="card-foot"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="#16a34a"></circle><circle cx="6" cy="6" r="2.5" fill="#fff"></circle></svg>المباراة جارية الآن — نتيجة مباشرة</div>';
-                } else if (st.isFinished) {
-                    footerContent =
-                        '<div class="card-foot"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="#6b7280"></circle><polyline points="3,6 5,8 9,4" stroke="#fff" stroke-width="1.5" fill="none"></polyline></svg><span class="result-detail">انتهت المباراة — نتيجة نهائية</span></div>';
-                } else {
-                    footerContent =
-                        '<div class="card-foot"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="#2563eb" stroke-width="1.2"></circle><line x1="6" y1="3" x2="6" y2="6" stroke="#2563eb" stroke-width="1.2"></line><line x1="6" y1="6" x2="9" y2="6" stroke="#2563eb" stroke-width="1.2"></line></svg>تنتظر الانطلاق — موعد المباراة</div>';
-                }
-
-                var cardHTML =
-                    '<div class="card' + liveClass + finishedClass + '" aria-label="' + m.home_en + ' ضد ' + m.away_en +
-                    ' — ' + st.label + '">' +
-                    '<div class="card-head">' +
-                    '<div class="league-row">' +
-                    '<img src="' + LIMG + m.league_logo + '" alt="' + m.league_en +
-                    '" class="league-img" loading="lazy" width="22" height="22" onerror="this.style.display=\'none\'">' +
-                    '<span class="league-name">' + m.league_en + '</span>' +
-                    '</div>' +
-                    '<span class="status-badge ' + st.cls + '">' +
-                    (st.isLive ? '<span class="live-indicator" aria-hidden="true"></span>' : '') + st.label +
-                    '</span>' +
-                    '</div>' +
-                    '<div class="card-body">' +
-                    '<div class="teams">' +
-                    '<div class="team">' +
-                    '<img src="' + TIMG + m.home_logo + '" alt="' + m.home_en +
-                    '" class="team-logo" loading="lazy" width="50" height="50" onerror="this.src=\'' + FALLBACK +
-                    '\'">' +
-                    '<span class="team-name">' + m.home_en + '</span>' +
-                    '</div>' +
-                    '<div class="center-col">' + centerContent + '</div>' +
-                    '<div class="team">' +
-                    '<img src="' + TIMG + m.away_logo + '" alt="' + m.away_en +
-                    '" class="team-logo" loading="lazy" width="50" height="50" onerror="this.src=\'' + FALLBACK +
-                    '\'">' +
-                    '<span class="team-name">' + m.away_en + '</span>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    footerContent +
-                    '</div>';
-
-                return cardHTML;
-            }
-
-            function showEl(id, display) {
-                document.getElementById(id).style.display = display || 'block';
-            }
-
-            function hideEl(id) {
-                document.getElementById(id).style.display = 'none';
-            }
-
-            function loadMatches() {
-                var targetDate = today();
-                var url = API + 'api/matches/' + targetDate + '/1?t=' + ts();
-
-                // تحديث عرض التاريخ بالأعلى
-                document.getElementById('date-display').textContent = formatDateAr(targetDate);
-
-                fetch(url)
-                    .then(function(r) {
-                        if (!r.ok) throw new Error('Network error');
-                        return r.json();
-                    })
-                    .then(function(data) {
-                        hideEl('loading');
-                        var matches = (data.matches || []).filter(function(m) {
-                            return m.category === 'Soccer' || m.category === 'Football' || true;
-                        });
-
-                        if (!matches.length) {
-                            showEl('loading');
-                            document.getElementById('loading').innerHTML =
-                                '<div class="state-icon">⚽</div><h3>لا توجد مباريات اليوم</h3><p>لم يتم العثور على مباريات لهذا اليوم. تحقق لاحقاً من جدول المباريات القادمة.</p>';
-                            document.getElementById('match-count').textContent = '٠ مباريات';
-                            return;
-                        }
-
-                        var liveCount = matches.filter(function(m) { return parseInt(m.status) === 1; }).length;
-                        var upcomingCount = matches.filter(function(m) { return parseInt(m.status) === 3; }).length;
-                        var finishedCount = matches.filter(function(m) { return parseInt(m.status) === 2; }).length;
-
-                        var countText = matches.length + ' مباراة';
-                        if (liveCount > 0) countText += ' | ' + liveCount + ' مباشر';
-                        if (upcomingCount > 0) countText += ' | ' + upcomingCount + ' قادمة';
-                        if (finishedCount > 0) countText += ' | ' + finishedCount + ' منتهية';
-                        document.getElementById('match-count').textContent = countText;
-
-                        // ترتيب: المباشر أولاً، ثم القادمة، ثم المنتهية
-                        matches.sort(function(a, b) {
-                            var sa = parseInt(a.status);
-                            var sb = parseInt(b.status);
-                            if (sa === 1 && sb !== 1) return -1;
-                            if (sa !== 1 && sb === 1) return 1;
-                            if (sa === 3 && sb === 2) return -1;
-                            if (sa === 2 && sb === 3) return 1;
-                            return 0;
-                        });
-
-                        var grid = document.getElementById('grid');
-                        // نمرر targetDate إلى buildCard لتحويل الوقت
-                        grid.innerHTML = matches.map(function(match) {
-                            return buildCard(match, targetDate);
-                        }).join('');
-                        showEl('grid', 'grid');
-                    })
-                    .catch(function() {
-                        hideEl('loading');
-                        showEl('error');
-                        document.getElementById('match-count').textContent = 'تعذر التحميل';
-                    });
-            }
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', loadMatches);
-            } else {
-                loadMatches();
-            }
-        })();
-    </script>
-
+    // بدء التشغيل
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            initTimezone();
+            loadMatches(getDateOffset(0));
+        });
+    } else {
+        initTimezone();
+        loadMatches(getDateOffset(0));
+    }
+})();
+</script>
 </body>
 </html>
